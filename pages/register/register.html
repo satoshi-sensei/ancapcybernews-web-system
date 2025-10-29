@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - AncapCyberNews</title>
+</head>
+<body>
+<form action="register.php" method="post">
+    <div>
+        <h2>Register</h2>
+    </div>
+
+    <div class="form-field">
+        <div><label>Username</label></div>
+        <input type="text" name="name" placeholder="username" required>
+    </div>
+
+    <div class="form-field">
+        <div><label>Email</label></div>
+        <input type="email" name="email" placeholder="example@gmail.com" required>
+    </div>
+
+    <div class="form-field">
+        <div><label>Password</label></div>
+        <input type="password" name="password" id="password" placeholder="password" required>
+    </div>
+
+    <div class="form-field">
+        <div><label>Confirm password</label></div>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password" required>
+        <div>
+            <span id="passwordFeedback" style="color: red; display: none;">As senhas não coincidem.</span><br>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" name="submit" id="submit" value="Register">
+    </div>
+
+    <div>
+        <button type="button" class="clear" onclick="login()">Login</button>
+    </div>
+</form>
+</body>
+<script>
+    function login()
+    {
+        window.location.href = "../../login.html";
+    }
+
+    const pw = document.getElementById("password");
+    const con_pw = document.getElementById("confirm_password");
+    const submitButton = document.getElementById("submit");
+    const feedback = document.getElementById("passwordFeedback");
+
+    submitButton.disabled = true;
+
+    function passwordVerification()
+    {
+        return pw.value !== "" && con_pw.value !== "" && pw.value === con_pw.value;
+    }
+
+    function toggleSubmitButton()
+    {
+        if (passwordVerification())
+        {
+            submitButton.disabled = false;
+            feedback.style.display = 'none';
+        } else {
+            submitButton.disabled = true;
+            if (pw.value !== "" && con_pw.value !== "" && pw.value !== con_pw.value)
+            {
+                feedback.style.display = 'inline';
+            } else {
+                feedback.style.display = 'none';
+            }
+        }
+    }
+
+    pw.addEventListener('input', toggleSubmitButton);
+    con_pw.addEventListener('input', toggleSubmitButton);
+</script>
+</html>

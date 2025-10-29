@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - AncapCyberNews</title>
+</head>
+<body>
+<form action="login.php" method="post">
+    <div>
+        <h2>Login</h2>
+    </div>
+
+    <div class="form-field">
+        <div><label>Email</label></div>
+        <input type="email" name="email" placeholder="example@gmail.com" required>
+    </div>
+
+    <div class="form-field">
+        <div><label>Senha</label></div>
+        <input type="password" name="password" placeholder="Digite sua senha" required>
+    </div>
+
+    <div>
+        <input type="submit" name="submit" value="Entrar">
+    </div>
+
+    <div>
+        <button type="button" onclick="register()">Registrar</button>
+    </div>
+</form>
+
+<script>
+    function register() {
+        window.location.href = "pages/register/register.html";
+    }
+</script>
+</body>
+</html>
